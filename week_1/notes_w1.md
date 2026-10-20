@@ -1,34 +1,15 @@
-# DuckDB configuration
+# ROW_NUMBER()
 
-To begin, we will install duckdb to run SQL locally
+Esta función asigna números secuenciales a las filas de un conjunto de resultados, proporcionando un orden claro para su posterior manipulación y análisis. Esto puede hacerse para el conjunto de datos en su totalidad o para distintos grupos de datos dentro del conjunto de datos.
 
-first run 
-
-`curl https://install.duckdb.org | bash`
-
-then run the next command only applies for zsh
-
-`echo 'export PATH="$HOME/.duckdb/cli/latest:$PATH"' >> ~/.zshrc`
-
-Then, the next command in order to refresh the shell
-
-`source ~/.zshrc`
-
-# DuckDB with VScode
-
-go to `>Preferences: Open Keyboard Shortcuts (JSON)` then add the next key:
+`ROW_NUMBER() OVER([PARTITION BY value expression, ... ] [ORDER BY order_by_clause])`
 
 ```
-    {
-        "key": "shift+enter",
-        "command": "workbench.action.terminal.runSelectedText"
-    }
+SELECT Val_1, 
+    ROW_NUMBER() OVER(PARTITION BY group_1, ORDER BY number DESC) AS rn
+FROM Data;
 ```
 
-# Create a DB
-To persist a database just run de duckdb command on the terminal and add the name of your database:
-
-`duckdb my_awesome_db.db`
-
-The extension is relative irrelevant, you can just use: .db, .duckdb
-If you already have a duckdub run: `.open 'your_database.db'`
+Useful links:
+https://duckdb.org/docs/current/sql/functions/dateformat
+https://www.datacamp.com/es/tutorial/row-number-sql
