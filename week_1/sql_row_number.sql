@@ -1,16 +1,10 @@
 show tables;
 
-from netflix;
+from netflix_gold_dataset;
 
 --ROW_NUMBER()
 
-with filtered as (SELECT Title as movie_title,
-DATE(strptime("Netflix Release Date", '%b %-d, %Y')) as release_date,
-FROM netflix
-WHERE Type = 'Movie'
-)
-
-SELECT movie_title
-,release_date
-,ROW_NUMBER() OVER(PARTITION BY release_date ORDER BY movie_title) as rn
-FROM filtered;
+SELECT title
+,ROW_NUMBER() OVER(PARTITION BY netflix_release_date ORDER BY title) as rn
+FROM netflix_gold_dataset
+WHERE type = 'Movie';
