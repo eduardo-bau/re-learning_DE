@@ -13,3 +13,18 @@ FROM Data;
 Useful links:
 https://duckdb.org/docs/current/sql/functions/dateformat
 https://www.datacamp.com/es/tutorial/row-number-sql
+https://duckdb.org/docs/2.0/sql/data_types/boolean
+https://www.datacamp.com/es/tutorial/coalesce-sql-function
+https://www.datacamp.com/es/tutorial/sql-rank
+
+# RANK()
+
+Syntax `RANK() OVER (ORDER BY column)`
+
+
+
+RANK(): Los empates comparten rango y, por tanto, quedan huecos tras los empates.
+
+DENSE_RANK(): Los empates comparten rango, pero no hay huecos en la secuencia.
+
+ROW_NUMBER(): Cada fila obtiene un número único sin empates, aunque los valores sean iguales.
